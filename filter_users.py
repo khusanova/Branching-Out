@@ -1,6 +1,12 @@
 import json
 
-def filter_users_by_name(name):
+def filter_users_by_name(name: str):
+    """
+    Print all users with the selected name.
+
+    Args:
+        name: users' name
+    """
     with open("users.json", "r") as file:
         users = json.load(file)
     

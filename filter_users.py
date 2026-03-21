@@ -1,3 +1,7 @@
+"""
+Command line tools to filter out users by a parameter and print a filtered list.
+"""
+
 import json
 
 

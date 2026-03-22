@@ -76,6 +76,22 @@ def filter_users_by_name(users: list[dict]) -> list:
     return filtered_users
 
 
+def filter_users_by_email(users: list[dict]) -> list:
+    """
+    Filter users list by email entered by the user.
+
+    Args:
+        users: list of users
+
+    Returns:
+        filtered list of users with the name entered by the user
+    """
+    name = input("Enter email to filter users: ").strip()
+    filtered_users = [user for user in users if user["email"].lower() ==
+                      name.lower()]
+    return filtered_users
+
+
 def filter_users(filter_by):
     """
     Filter users with a function filter_by, print filtered list of users.
@@ -101,7 +117,8 @@ def call(filter_option: str):
 
 DISPATCHER = {
     "age": filter_users_by_age,
-    "name": filter_users_by_name
+    "name": filter_users_by_name,
+    "email": filter_users_by_email
 }
 
 

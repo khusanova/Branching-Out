@@ -78,6 +78,18 @@ def filter_users_by_name(name: str):
         print(user)
 
 
+def filter_users(filter_by):
+    """
+    Filter users with a function filter_by, print filtered list of users.
+
+    Args:
+        filter_by: a function used for filtering users list.
+    """
+    users = load_users()
+    filtered_users = filter_by(users)
+    print_users(filtered_users)
+
+
 if __name__ == "__main__":
     filter_option = input("What would you like to filter by? (Currently, only "
                           "'name' and 'age' are supported): ").strip().lower()

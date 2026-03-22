@@ -30,6 +30,21 @@ def load_users():
     return None
 
 
+def print_users(users: list, no_users_message: str = "No users found."):
+    """
+    Print users from a list.
+
+    Args:
+        users: list of dictionaries with information about users.
+        no_users_message: message to print if the list is empty.
+    """
+    if users:
+        for user in users:
+            print(user)
+    else:
+        print(no_users_message)
+
+
 def filter_users_by_age(age: int):
     """
     Print all users with a specific age.

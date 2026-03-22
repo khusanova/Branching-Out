@@ -80,7 +80,12 @@ def filter_users_by_name(users: list[dict]) -> list:
     Returns:
         filtered list of users with the name entered by the user
     """
-    name = input("Enter a name to filter users: ").strip()
+    while True:
+        name = input("Enter a name to filter users: ").strip()
+        if name.isalpha():
+            break
+        else:
+            print("Names should only be composed of letters.")
     filtered_users = [user for user in users if user["name"].lower() ==
                       name.lower()]
     return filtered_users

@@ -61,21 +61,20 @@ def filter_users_by_age(age: int):
         print(user)
 
 
-def filter_users_by_name(name: str):
+def filter_users_by_name(users: list[dict]) -> list:
     """
-    Print all users with the selected name.
+    Filter users list by name entered by the user.
 
     Args:
-        name: users' name
-    """
-    with open("users.json", "r", encoding="utf-8") as file:
-        users = json.load(file)
+        users: list of users
 
+    Returns:
+        filtered list of users with the name entered by the user
+    """
+    name = input("Enter a name to filter users: ").strip()
     filtered_users = [user for user in users if user["name"].lower() ==
                       name.lower()]
-
-    for user in filtered_users:
-        print(user)
+    return filtered_users
 
 
 def filter_users(filter_by):

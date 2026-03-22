@@ -88,15 +88,27 @@ def filter_users(filter_by):
     print_users(filtered_users)
 
 
+def call(filter_option: str):
+    """
+    Call filter_users function with a correct filtering function from
+    the DISPATCHER
+
+    Args:
+        filter_option: keyword to call filtering function from the DISPATCHER
+    """
+    filter_users(DISPATCHER[filter_option])
+
+
+DISPATCHER = {
+    "age": filter_users_by_age,
+    "name": filter_users_by_name
+}
+
+
 if __name__ == "__main__":
     filter_option = input("What would you like to filter by? (Currently, only "
                           "'name' and 'age' are supported): ").strip().lower()
-
-    if filter_option == "name":
-        name_to_search = input("Enter a name to filter users: ").strip()
-        filter_users_by_name(name_to_search)
-    elif filter_option == "age":
-        age_to_search = int(input("Enter age to filter users: ").strip())
-        filter_users_by_age(age_to_search)
+    if filter_option in DISPATCHER:
+        call(filter_option)
     else:
         print("Filtering by that option is not yet supported.")

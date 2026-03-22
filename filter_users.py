@@ -115,6 +115,18 @@ def call(filter_option: str):
     filter_users(DISPATCHER[filter_option])
 
 
+def print_supported_filters():
+    """
+    Display supported filter options.
+    """
+    print("Supported filter options: ", end="")
+    for i, key in enumerate(DISPATCHER):
+        if i < len(DISPATCHER) - 1:
+            print(f"{key}, ", end="")
+        else:
+            print(f"{key}.")
+
+
 DISPATCHER = {
     "age": filter_users_by_age,
     "name": filter_users_by_name,
@@ -123,8 +135,8 @@ DISPATCHER = {
 
 
 if __name__ == "__main__":
-    filter_option = input("What would you like to filter by? (Currently, only "
-                          "'name' and 'age' are supported): ").strip().lower()
+    print_supported_filters()
+    filter_option = input("What would you like to filter by? ").strip().lower()
     if filter_option in DISPATCHER:
         call(filter_option)
     else:

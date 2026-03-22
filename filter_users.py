@@ -6,6 +6,8 @@ import json
 
 
 PATH_TO_USERS_LIST = "users.json"
+AGE_MIN = 0
+AGE_MAX = 120
 
 
 def load_users():
@@ -55,7 +57,15 @@ def filter_users_by_age(users: list[dict]) -> list:
     Returns:
         filtered list of users with the name entered by the user
     """
-    age = int(input("Enter age to filter users: ").strip())
+    while True:
+        try:
+            age = int(input("Enter age to filter users: ").strip())
+            if AGE_MIN <= age <= AGE_MAX:
+                break
+            else:
+                print(f"Age should be in range from {AGE_MIN} to {AGE_MAX}.")
+        except ValueError:
+            print("Enter an integer number.")
     filtered_users = [user for user in users if user["age"] == age]
     return filtered_users
 

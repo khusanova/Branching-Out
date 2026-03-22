@@ -45,20 +45,19 @@ def print_users(users: list, no_users_message: str = "No users found."):
         print(no_users_message)
 
 
-def filter_users_by_age(age: int):
+def filter_users_by_age(users: list[dict]) -> list:
     """
-    Print all users with a specific age.
+    Filter users list by the age entered by the user.
 
     Args:
-        age: age to filter by.
+        users: list of users
+
+    Returns:
+        filtered list of users with the name entered by the user
     """
-    with open("users.json", "r", encoding="utf-8") as file:
-        users = json.load(file)
-
+    age = int(input("Enter age to filter users: ").strip())
     filtered_users = [user for user in users if user["age"] == age]
-
-    for user in filtered_users:
-        print(user)
+    return filtered_users
 
 
 def filter_users_by_name(users: list[dict]) -> list:

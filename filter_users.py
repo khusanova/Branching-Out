@@ -101,9 +101,14 @@ def filter_users_by_email(users: list[dict]) -> list:
     Returns:
         filtered list of users with the name entered by the user
     """
-    name = input("Enter email to filter users: ").strip()
+    while True:
+        email = input("Enter email to filter users: ").strip()
+        if '@' in email:
+            break
+        else:
+            print("Invalid email.")
     filtered_users = [user for user in users if user["email"].lower() ==
-                      name.lower()]
+                      email.lower()]
     return filtered_users
 
 

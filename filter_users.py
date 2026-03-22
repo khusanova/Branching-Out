@@ -103,7 +103,7 @@ def filter_users_by_email(users: list[dict]) -> list:
     """
     while True:
         email = input("Enter email to filter users: ").strip()
-        if '@' in email:
+        if '@' in email and '.' in email:
             break
         else:
             print("Invalid email.")

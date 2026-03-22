@@ -5,6 +5,22 @@ Command line tools to filter out users by a parameter and print a filtered list.
 import json
 
 
+def filter_users_by_age(age: int):
+    """
+    Print all users with a specific age.
+
+    Args:
+        age: age to filter by.
+    """
+    with open("users.json", "r", encoding="utf-8") as file:
+        users = json.load(file)
+
+    filtered_users = [user for user in users if user["age"] == age]
+
+    for user in filtered_users:
+        print(user)
+
+
 def filter_users_by_name(name: str):
     """
     Print all users with the selected name.

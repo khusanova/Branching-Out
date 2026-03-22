@@ -5,6 +5,31 @@ Command line tools to filter out users by a parameter and print a filtered list.
 import json
 
 
+PATH_TO_USERS_LIST = "users.json"
+
+
+def load_users():
+    """
+    Load the list of users from a file
+
+    Returns:
+        list of dictionaries with information about users
+    """
+    try:
+        with open(PATH_TO_USERS_LIST, "r", encoding="utf-8") as file:
+            users = json.load(file)
+            return users
+    except FileNotFoundError:
+        print(f"List not found: {PATH_TO_USERS_LIST} does not exist.")
+    except PermissionError:
+        print(f"Cannot read file {PATH_TO_USERS_LIST}. Permission denied.")
+    except UnicodeDecodeError:
+        print(f"Cannot read file {PATH_TO_USERS_LIST}. Encoding should be UTF-8")
+    except OSError as e:
+        print(f"Failed to load {PATH_TO_USERS_LIST}: {e}")
+    return None
+
+
 def filter_users_by_age(age: int):
     """
     Print all users with a specific age.
